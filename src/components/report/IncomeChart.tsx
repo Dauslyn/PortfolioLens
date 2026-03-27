@@ -11,18 +11,9 @@ import {
   Cell,
 } from 'recharts'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import type { IncomeBreakdown } from '@/lib/types'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-
-interface IncomeBreakdown {
-  year: number
-  eligibleDividends: number
-  interest: number
-  capitalGains: number
-  returnOfCapital: number
-  foreignIncome: number
-  total: number
-}
 
 interface IncomeChartProps {
   income: IncomeBreakdown

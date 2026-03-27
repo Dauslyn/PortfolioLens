@@ -10,18 +10,9 @@ import {
   Tooltip,
 } from 'recharts'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import type { AllocationBreakdown } from '@/lib/types'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-
-interface AllocationBreakdown {
-  equity: number
-  fixedIncome: number
-  cash: number
-  alternatives: number
-  canadaEquity: number
-  usEquity: number
-  internationalEquity: number
-}
 
 interface AllocationChartProps {
   allocation: AllocationBreakdown
