@@ -4,6 +4,7 @@ import PageBackground from '@/components/layout/PageBackground'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import UploadZone from '@/components/upload/UploadZone'
 import ManualInput from '@/components/upload/ManualInput'
+import DriveImport from '@/components/upload/DriveImport'
 
 const features = [
   {
@@ -84,6 +85,12 @@ export default function HomePage() {
                   >
                     Paste Holdings
                   </TabsTrigger>
+                  <TabsTrigger
+                    value="drive"
+                    className="h-8 rounded-lg px-5 text-sm font-medium data-active:bg-card data-active:text-foreground data-active:shadow-sm"
+                  >
+                    Google Drive
+                  </TabsTrigger>
                 </TabsList>
               </div>
 
@@ -94,6 +101,9 @@ export default function HomePage() {
                 </TabsContent>
                 <TabsContent value="paste">
                   <ManualInput />
+                </TabsContent>
+                <TabsContent value="drive">
+                  <DriveImport />
                 </TabsContent>
               </div>
             </Tabs>
