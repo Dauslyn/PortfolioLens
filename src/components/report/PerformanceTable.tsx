@@ -114,7 +114,7 @@ function TH({ children, right }: { children: React.ReactNode; right?: boolean })
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export function PerformanceTable({ holdings, benchmark, selectedBenchmark }: PerformanceTableProps) {
+export default function PerformanceTable({ holdings, benchmark, selectedBenchmark }: PerformanceTableProps) {
   return (
     <TooltipProvider>
       <Card className="glass rounded-2xl border-0 w-full">
@@ -129,10 +129,8 @@ export function PerformanceTable({ holdings, benchmark, selectedBenchmark }: Per
                   Annualized returns · <span className="return-positive">green</span> = outperforms · <span className="return-negative">red</span> = underperforms
                 </p>
                 <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button className="text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                      <Info size={12} />
-                    </button>
+                  <TooltipTrigger className="text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+                    <Info size={12} />
                   </TooltipTrigger>
                   <TooltipContent side="top">
                     Returns are annualized percentages. Past performance does not guarantee future results.
