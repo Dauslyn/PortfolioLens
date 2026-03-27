@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PortfolioLens
 
-## Getting Started
+AI-powered portfolio analysis tool for Canadian financial advisors. Upload a brokerage statement PDF or paste holdings — Claude researches every fund/ETF/stock from primary sources, verifies each data point with an independent agent, and generates a comprehensive report.
 
-First, run the development server:
+## What it does
+
+- **Parses** brokerage statements (PDF or pasted text) into structured holdings
+- **Researches** each holding: asset allocation, income distributions (eligible dividends, interest, capital gains, ROC, foreign income), MER, and 1/3/5/10yr performance from MRFP documents
+- **Verifies** — a second independent agent re-fetches each source and flags discrepancies
+- **Reports** — asset allocation chart, income breakdown, performance vs benchmark (XGRO/XEQT/XBAL/XDIV), weighted MER, and full holdings detail
+- **Exports** report as JSON for use in Plan Builder
+
+## Getting started
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/Dauslyn/PortfolioLens.git
+cd PortfolioLens
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up environment
+cp .env.local.example .env.local
+# Edit .env.local and add your ANTHROPIC_API_KEY
+
+# 4. Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js 16 (App Router, Turbopack)
+- React 19 + TypeScript
+- Tailwind CSS v4 + shadcn/ui
+- Claude API (`claude-sonnet-4-6`) — PDF parsing, web research, verification
+- Recharts — allocation/income/performance charts
+- Lucide React — icons
 
-## Learn More
+## Data sources
 
-To learn more about Next.js, take a look at the following resources:
+All free, no paid APIs:
+- **Canadian ETFs/mutual funds**: ETF Facts + MRFP PDFs from fund company websites
+- **DFA Canada**: dimensional.com/ca-en/document-center
+- **US ETFs**: Provider fact sheets (SSGA, iShares, Vanguard)
+- **Tax character**: CDS Innovations CTBS (annually), fund company T3/T5 notices
+- **Stocks**: Yahoo Finance, canadastockchannel.com
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Note: SEDAR+ is bot-protected — the app uses fund company websites directly.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Part of Finance Hub
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+One of 13-14 advisor tools being built. Each tool lives in its own repo.
